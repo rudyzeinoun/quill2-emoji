@@ -78,7 +78,7 @@ function fn_showEmojiPalette(quill: Quill) {
   const paletteLeft = getPaletteLeft();
   function getPaletteTop () { // 处理 emoji 浮窗 的 top 距离
     if (toolbarBounds) {
-      return toolbarBounds.top - editorBounds.top + toolbarBounds.height;
+      return toolbarBounds.top - editorBounds.top + toolbarBounds.height + 8;
     }
     // const beforePaletteTop = editorBounds.top + selectionMiddle + paletteWidthAndHeight + 10 <= document.documentElement.clientHeight ? selectionMiddle + 10 :
     // editorBounds.top + selectionMiddle - paletteWidthAndHeight - 10 >= 0 ? selectionMiddle - paletteWidthAndHeight - 10 :
@@ -115,7 +115,9 @@ function fn_showEmojiPalette(quill: Quill) {
     {'type': 'a', 'name': 'activity', 'content': '<div class="i-activity"></div>'},
     {'type': 't', 'name': 'travel', 'content': '<div class="i-travel"></div>'},
     {'type': 'o', 'name': 'objects', 'content': '<div class="i-objects"></div>'},
-    {'type': 'f', 'name': 'flags', 'content': '<div class="i-flags"></div>'}
+    {'type': 'f', 'name': 'flags', 'content': '<div class="i-flags"></div>'},
+    {'type': 'x', 'name': 'language', 'content': '<div class="i-language"></div>'},
+    
   ];
 
   let tabElementHolder = document.createElement('ul');
@@ -140,9 +142,9 @@ function fn_showEmojiPalette(quill: Quill) {
     tabElement.dataset.filter = emojiType.type;
     tabElementHolder.appendChild(tabElement);
 
-    let emojiFilter = document.querySelector('.filter-' + emojiType.name) ?? document.createElement('div');
+    let emojiFilter = tabElementHolder.querySelector('.filter-' + emojiType.name) ?? document.createElement('div');
     emojiFilter.addEventListener('click', function () {
-      let tab = document.querySelector('.active');
+      let tab = tabElementHolder.querySelector('.active');
       if (tab) {
         tab.classList.remove('active');
       }
