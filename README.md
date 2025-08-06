@@ -1,10 +1,13 @@
 # quill2-emoji
 quill2 version emoji
 
+Forked from xingw-z/quill2-emoji.
+Extended to add special Latin characters.
+
 # Install
 
 ```bash
-npm install quill2-emoji
+npm install @rudyzeinoun/quill2-emoji
 ```
 
 # Usage
